@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorPrimary"
+    tools:context="com.flash.brainbreaker.flash.PaymentActivity"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/meter_Add"
+        android:gravity="center"
+        android:text="Meter Address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/textColorSecondaryInverse"
+        android:maxLines="2"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/units"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/textColorSecondaryInverse"
+        android:maxLines="2"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rate"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/rate"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/textColorSecondaryInverse"
+        android:maxLines="2"
+        android:background="?attr/colorPrimary"
+        android:layout_marginTop="40dp"/>
+
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/amount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/textColorSecondaryInverse"
+        android:layout_marginTop="40dp"/>
+
+    <Button
+        android:id="@+id/Pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pay using UPI"
+        android:layout_marginTop="50dp"/>
+
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">RSEB</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="phone">Phone</string>
+    <string name="phone_error">Please enter only 10 digits</string>
+    <string name="phone_details">Your phone will be used to search your account</string>
+
+    <string name="meter">Meter Number</string>
+    <string name="meter_error">Please enter only 4 digits</string>
+    <string name="meter_details">Enter Your 4 digit Meter Number</string>
+
+    <string name="eula_details">Please accept our end-user license agreement.\n(Just a dummy)</string>
+
+    <string name="email">E-mail</string>
+    <string name="email_error">Empty or not well-formed</string>
+    <string name="email_details">Your e-mail will be used as your login. Type the one you use most often.</string>
+
+    <string name="password">Password</string>
+    <string name="password_error">Empty or not 5-chars long</string>
+    <string name="password_details">Type your password (5-chars long)</string>
+
+    <string name="birthday">Birthday</string>
+    <string name="birthday_error">You must be at least 14.</string>
+    <string name="birthday_details">We will use your birthday only to calculate your age (older than 14).</string>
+
+    <string name="height">Body height</string>
+    <string name="height_error">You must be at least 160cm tall.</string>
+    <string name="height_details">Just another fake input (taller than 160cm).</string>
+
+    <string name="city">City</string>
+    <string name="city_error">Enter a city.</string>
+    <string name="city_details">We need this information to find you if you mess with us.</string>
+
+    <string name="finished">Fetching your reading...</string>
+    <string name="units">Units Used</string>
+    <string name="rate">Rate</string>
+    <string name="amount">Amount</string>
+</resources>

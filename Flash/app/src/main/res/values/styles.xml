@@ -1,0 +1,26 @@
+<resources>
+
+    <style name="AppTheme" parent="BaseTheme">
+    </style>
+
+    <style name="BaseThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/material_light_green_500</item>
+        <item name="colorPrimaryDark">@color/material_light_green_700</item>
+        <item name="colorAccent">@color/material_amber_a200</item>
+    </style>
+
+    <style name="BaseThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/material_indigo_500</item>
+        <item name="colorPrimaryDark">@color/material_indigo_700</item>
+        <item name="colorAccent">@color/material_deep_purple_a200</item>
+        <item name="android:textColorPrimaryInverse">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/material_bordeaux_500</item>
+        <item name="colorPrimaryDark">@color/material_bordeaux_700</item>
+        <item name="colorAccent">@color/material_orange_a200</item>
+        <item name="android:textColorPrimary">@color/material_bordeaux_800</item>
+    </style>
+
+</resources>
