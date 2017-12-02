@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" http-equiv="refresh" content="2">
+    <title>Graph</title>
+</head>
+<body bgcolor="#F0F0F0">
+
+<h1 align="center">Rajasthan Live energy Consumption Blockchain</h1>
+<br>
+
+<table align="center" border="solid">
+    <tr>
+        <th>Block Index</th>
+        <th>Previous Hash</th>
+        <th>Timestamp (Unix)</th>
+        <th>Total Transactions</th>
+        <th>Total Usage (in kWh)</th>
+    </tr>
+    {% for d in data %}
+   <tr>
+        <td align="center"><a href="#" >{{  d["Block Number"] }}</a></td>
+        <td align="center">{{  d["Previous Hash"] }}</td>
+        <td align="center">{{  d["Timestamp"] }}</td>
+        <td align="center">{{  d["Total Transactions"] }}</td>
+        <td align="center">{{  d["Total Units Usage"] }} </td>
+   </tr>
+{% endfor %}
+</table>
+
+<br>
+
+{#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
+{#<img src="static/1_1.png">#}
+{#&nbsp;&nbsp;&nbsp;&nbsp;#}
+{#<img src="static/2_1.png">#}
+
+
+</body>
+</html>

@@ -7,7 +7,7 @@ meter_address = "1x11"
 
 i = 1
 
-while i <= 8:
+while i <= 20:
     data = {}
     data['meter_address'] = meter_address
     data['meter_usage'] = random.randint(5,15)
@@ -15,7 +15,7 @@ while i <= 8:
 
     print(data)
 
-    time.sleep(1)
+    time.sleep(2)
 
     t = requests.post("http://127.0.0.1:5000/transactions/new", json=data)
 
