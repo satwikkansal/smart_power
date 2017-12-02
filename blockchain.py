@@ -1,7 +1,7 @@
 import hashlib
 import json
 from time import time
-from urlparse import urlparse
+from urllib import parse
 from uuid import uuid4
 
 import requests
@@ -24,7 +24,7 @@ class Blockchain:
         :param address: Address of node. Eg. 'http://192.168.0.5:5000'
         """
 
-        parsed_url = urlparse(address)
+        parsed_url = parse(address)
         self.nodes.add(parsed_url.netloc)
 
     def valid_chain(self, chain):
@@ -313,4 +313,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     port = args.port
 
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='127.0.0.1', port=port, debug=True)

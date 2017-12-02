@@ -13,13 +13,13 @@ while i <= 8:
     data['meter_usage'] = random.randint(5,15)
     data['timestamp'] = time.time()
 
-    print data
+    print(data)
 
     time.sleep(1)
 
     t = requests.post("http://127.0.0.1:5000/transactions/new", json=data)
 
-    print t.text
+    print(t.text)
 
     if i%4==0:
         # Mine the pushed transactions for a single block

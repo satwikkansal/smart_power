@@ -1,12 +1,11 @@
 import hashlib
 import json
 from time import time
-from urlparse import urlparse
+from urllib import parse
 from uuid import uuid4
 
 import requests
 from flask import Flask, jsonify, request,abort
-
 
 class Blockchain:
     def __init__(self):
@@ -24,7 +23,7 @@ class Blockchain:
         :param address: Address of node. Eg. 'http://192.168.0.5:5000'
         """
 
-        parsed_url = urlparse(address)
+        parsed_url = parse(address)
         self.nodes.add(parsed_url.netloc)
 
     def valid_chain(self, chain):
@@ -113,14 +112,13 @@ class Blockchain:
         self.chain.append(block)
         return block
 
-    def new_transaction(self, meter_address, meter_usage, paid_amount, time_of_payment):
+    def new_transaction(self, meter_address, paid_amount, time_of_payment):
         """
         Creates a new transaction to go into the next mined Block
         :return: The index of the Block that will hold this transaction
         """
         self.current_transactions.append({
             'meter_address': meter_address,
-            'meter_usage': meter_usage,
             'paid_amount': paid_amount,
             'time_of_payment': time_of_payment
         })
@@ -220,7 +218,7 @@ def new_transaction():
     values = request.get_json()
 
     # Check that the required fields are in the POST'ed data
-    required = ['meter_address', 'meter_usage', 'paid_amount', 'time_of_payment']
+    required = ['meter_address', 'paid_amount', 'time_of_payment']
 
     for k in required:
         if k not in values:
@@ -229,9 +227,15 @@ def new_transaction():
     timestamp = time()
 
     # Create a new Transaction
-    index = blockchain.new_transaction(values['meter_address'], values['meter_usage'], values['paid_amount'], timestamp)
+    index = blockchain.new_transaction(values['meter_address'], values['paid_amount'], values['time_of_payment'])
 
-    response = {'message': 'Transaction will be added to Block {}'.format(index)}
+    mine_block_response, status_code = mine()
+    mine_response = json.loads(mine_block_response.get_data(as_text=True))
+    print(mine_block_response.get_data(as_text=True))
+    response = {
+        'message': 'Transaction will be added to Block {}'.format(index),
+        'hash_code' : mine_response['previous_hash']
+    }
     return jsonify(response), 201
 
 
@@ -288,4 +292,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     port = args.port
 
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='127.0.0.1', port=5050, debug=True)

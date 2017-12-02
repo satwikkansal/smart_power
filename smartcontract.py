@@ -6,8 +6,8 @@ from flask import request
 import json
 
 
-URL_UNIT_BLOCKCHAIN = "https://31aceb6e.ngrok.io/get_usage"
-URL_PAYMENT_BLOCKCHAIN = ""
+URL_UNIT_BLOCKCHAIN = "http://127.0.0.1:5000/get_usage"
+URL_PAYMENT_BLOCKCHAIN = "http://127.0.0.1:5050/transactions/new"
 BILL_RATE_PER_UNIT = 100
 
 node = Flask(__name__)
@@ -47,7 +47,7 @@ def getBill():
 
     return json.dumps({
         "meter_address" : meter_address,
-        "rate per unit"  : BILL_RATE_PER_UNIT,
+        "rate_per_unit"  : BILL_RATE_PER_UNIT,
         "meter_usage_amount" : meter_usage_amount,
         "meter_bill_amount" : meter_bill_amount
     })
@@ -59,16 +59,17 @@ def payBill():
     meter_to_fetch = request.get_json()
     meter_address = meter_to_fetch["meter_address"]
     meter_bill_amount = meter_to_fetch["meter_bill_amount"]
+    meter_bill_timestamp = meter_to_fetch["bill_timestamp"]
 
     meter_usage_amount = getMeterUsage(meter_address)
     check_amount = meter_usage_amount * BILL_RATE_PER_UNIT
 
-    if meter_bill_amount == check_amount :
-        params = {"meter_address":meter_address, "meter_bill_amount":meter_bill_amount}
-        r = requests.post(url = URL_PAYMENT_BLOCKCHAIN, params = params)
+    if int(meter_bill_amount) == check_amount :
+        data = {"meter_address":meter_address, "paid_amount":meter_bill_amount, "time_of_payment":meter_bill_timestamp}
+        r = requests.post(url = URL_PAYMENT_BLOCKCHAIN, json = data)
         hash_code = r.json()["hash_code"]
 
-        status = setNextInMeter(meter_address)
+        # status = setNextInMeter(meter_address)
 
         return json.dumps({
             "payment_status" : "success",
@@ -77,10 +78,11 @@ def payBill():
     else :
         return json.dumps({
             "payment_status" : "unsuccessful",
+            "given_bill" : meter_bill_amount,
+            "actual_bill" : check_amount
         })
 
 
-node.run()
-
+node.run(host='127.0.0.1', port=8000, debug=True)
 
 
