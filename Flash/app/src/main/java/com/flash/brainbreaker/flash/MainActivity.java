@@ -40,7 +40,7 @@ public class MainActivity extends SingleInputFormActivity {
     private static final String DATA_KEY_PHONE = "phone";
     private static final String DATA_KEY_PASSWORD = "password";
     private static final String DATA_KEY_METER = "meter";
-    private static final String URL = "http://e8fa56ad.ngrok.io/get_bill";
+    private static final String URL = "http://e6c614d0.ngrok.io/get_bill";
     SweetAlertDialog pDialog;
     @Override
     protected List<Step> onCreateSteps(){

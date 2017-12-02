@@ -32,8 +32,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import static com.flash.brainbreaker.flash.MainActivity.convertStreamToString;
 
 public class PaymentActivity extends AppCompatActivity {
-    public static final String URL = "http://.ngrok.io/pay_bill";
+    public static final String URL = "http://e6c614d0.ngrok.io/pay_bill";
     SweetAlertDialog pDialog;
+    Gson gson;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class PaymentActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString("response");
 
-        Gson gson = new Gson();
+        gson = new Gson();
         final APIResult apiResult = gson.fromJson(message, APIResult.class);
 
         if(apiResult != null) {
@@ -102,10 +103,11 @@ public class PaymentActivity extends AppCompatActivity {
                         final String jsonResponse = convertStreamToString(in);
                         new SweetAlertDialog(PaymentActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Success")
-                                .setContentText("Your Unique txn hash - " + "SOME_RANDOM_HASH")
+                                .setContentText("Your Unique txn hash - " + gson.fromJson(jsonResponse, PayResponse.class).hash)
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        Toast.makeText(PaymentActivity.this, "Hash copied to Clipboard", Toast.LENGTH_LONG).show();
                                         finish();
                                     }
                                 })
