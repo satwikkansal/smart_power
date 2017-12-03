@@ -1,4 +1,4 @@
-<h1 align="center">Project Name</h1>
+<h1 align="center">Smart Grid</h1>
 
 <p align="center">A one line description of the project.</p>
 
