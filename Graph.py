@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from flask import Flask, render_template, jsonify
 import requests
 import json
