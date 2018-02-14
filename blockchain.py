@@ -1,7 +1,7 @@
 import hashlib
 import json
 from time import time
-from urllib import parse
+from urlparse import urlparse as parse
 from uuid import uuid4
 
 import requests
