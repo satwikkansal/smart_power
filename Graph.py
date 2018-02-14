@@ -29,35 +29,7 @@ def index():
 
         blocks_data.append(block_dict)
 
-        meter_address = []
-        meter_usage = []
-        transaction_number = []
-
-        for j in range(0, transaction_length):
-            # meter_address.append(str(r["chain"][i]["transactions"][j]["meter_address"]))
-            meter_usage.append(int(r["chain"][i]["transactions"][j]["meter_usage"]))
-            transaction_number.append(j + 1)
-
-        # print transaction_number
-        # print meter_usage
-        #
-        # print "\n"
-
-        # plt.figure()
-        # plt.title("Transaction Number vs Meter Usage")
-        # plt.plot(transaction_number, meter_usage, color='r', label='Transaction Number vs Meter Usage')
-
-
-        fig, ax = plt.subplots()
-        plt.title("Transaction Number vs Meter Usage")
-        ax.errorbar(transaction_number, meter_usage, xerr=0.2, yerr=0.4)
-        # plt.show()
-        path = "/home/dushyant/Desktop/Github/smart_power/images/" + str(i) + "_" + str(j) + ".png"
-        plt.savefig(path)
-
-
-    return render_template("graph.html", data=blocks_data, path=path)
-
+    return render_template("graph.html", data=blocks_data)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000, debug=True)
